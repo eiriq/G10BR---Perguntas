@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O que é o AVB?</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Ubuntu', sans-serif;
+            background-color: #271b1b;
+            color: #ff9898;
+            padding: 20px;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #2f2323;
+            border: 2px solid #ff9898;
+            border-radius: 10px;
+        }
+
+        p, ul {
+            margin: 10px 0 20px;
+            text-align: justify;
+        }
+
+        a {
+            color: #ff6363;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        strong {
+            color: #ff6363;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 20px;
+            background-color: transparent;
+            color: #ff9898;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #ff6363;
+        }
+
+        ul {
+            list-style: square;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <button class="close-btn" onclick="window.location.href='index.html'">✖</button>
+
+    <h1>O que é o AVB?</h1>
+
+    <div class="content">
+        <p>
+            <strong>Android Verified Boot (AVB)</strong> é uma funcionalidade de segurança introduzida no Android 4.4 KitKat e aprimorada em versões posteriores. O objetivo do AVB é garantir que o código executado no dispositivo seja confiável, vindo de fontes autenticadas, como o fabricante (OEM), e não de fontes comprometidas. Aqui estão os principais pontos sobre o AVB:
+        </p>
+
+        <h2>Principais Características do AVB</h2>
+        <ul>
+            <li><strong>Verificação de Integridade:</strong> Durante o processo de inicialização (boot), o AVB verifica cada estágio para garantir que o próximo seja legítimo e não tenha sido alterado por terceiros.</li>
+            <li><strong>Proteção contra Rollback:</strong> O AVB impede que dispositivos sejam atualizados para versões antigas do Android, protegendo contra exploits e falhas de segurança.</li>
+            <li><strong>Comunicação de Estado:</strong> O AVB permite que o dispositivo informe ao usuário se há algum problema de integridade, ajudando na detecção de ameaças.</li>
+            <li><strong>Compatibilidade com Treble:</strong> Desde o Android 8.0, o AVB foi integrado com o Project Treble, separando o framework Android do código específico do fornecedor, o que melhora a segurança e a atualização do sistema.</li>
+        </ul>
+
+        <h2>Conclusão</h2>
+        <p>
+            O AVB é uma camada importante de segurança no Android, garantindo que o sistema e os dados no dispositivo estejam protegidos contra modificações maliciosas durante o processo de inicialização.
+        </p>
+    </div>
+</body>
+</html>
+

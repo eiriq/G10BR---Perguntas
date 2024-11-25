@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O que é o TWRP, ou Recovery?</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Ubuntu', sans-serif;
+            background-color: #271b1b;
+            color: #ff9898;
+            padding: 20px;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        h1, h2 {
+            margin: 20px 0;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        h2 {
+            font-size: 20px;
+            color: #ff6363;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #2f2323;
+            border: 2px solid #ff9898;
+            border-radius: 10px;
+        }
+
+        p {
+            margin: 10px 0 20px;
+            text-align: justify;
+        }
+
+        pre {
+            background-color: #1e1e1e;
+            color: #00ff7f;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+        }
+
+        .search-container {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .search-bar {
+            width: 100%;
+            max-width: 400px;
+            height: 40px;
+            padding: 10px;
+            border: 2px solid #ff9898;
+            border-radius: 20px;
+            background-color: transparent;
+            color: #ff9898;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .search-bar::placeholder {
+            color: #ff9898;
+        }
+
+        .search-bar:focus,
+        .search-bar:hover {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff6363;
+            color: #271b1b;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #ff9898;
+        }
+
+        a {
+            color: #ff6363;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #ff9898;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 20px;
+            background-color: transparent;
+            color: #ff9898;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #ff6363;
+        }
+    </style>
+</head>
+<body>
+    <button class="close-btn" onclick="window.location.href='index.html'">✖</button>
+
+    <h1>O que é o TWRP, ou Recovery?</h1>
+
+    <div class="content">
+        <p>
+            O Recovery no mundo Android é uma partição de recuperação que pode ser usada para restaurar o dispositivo para as configurações de fábrica, aplicar atualizações ou realizar manutenção no sistema, incluindo a instalação de pacotes via ADB, entre outros.
+        </p>
+
+        <p>
+            Já o <a href="https://twrp.me/Devices/" target="_blank">TWRP</a> é uma ferramenta personalizada de recovery. Ele oferece uma interface mais polida e diversos recursos adicionais em comparação ao Recovery padrão.
+        </p>
+
+        <h2>Como acessar o Recovery?</h2>
+        <p>
+            Todos os dispositivos Android modernos possuem um Recovery que pode ser acessado das seguintes maneiras:
+        </p>
+        <ul>
+            <li>
+                Pelo computador, utilizando o ADB:
+                <pre>adb reboot recovery</pre>
+            </li>
+            <li>
+                Pelo próprio dispositivo:
+                <pre>Reiniciar > Botão de Power + Volume Inferior > Recovery</pre>
+            </li>
+        </ul>
+
+        <p>
+            É necessário cuidado ao operar o Recovery para evitar problemas no dispositivo.
+        </p>
+
+        <h2>Compatibilidade do TWRP</h2>
+        <p>
+            Para verificar se o TWRP é compatível com o seu dispositivo, digite o nome dele abaixo:
+        </p>
+
+        <div class="search-container">
+            <input 
+                type="text" 
+                class="search-bar" 
+                placeholder="Digite o modelo do seu dispositivo..."
+                id="device-search"
+                onkeydown="handleSearch(event)">
+        </div>
+    </div>
+
+    <script>
+        function handleSearch(event) {
+            if (event.key === 'Enter') {
+                const query = event.target.value.trim();
+                if (query) {
+                    const googleSearchUrl = `https://www.google.com/search?q=TWRP+for+${encodeURIComponent(query)}`;
+                    window.location.href = googleSearchUrl;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+

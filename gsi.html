@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O que são GSIs?</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Ubuntu', sans-serif;
+            background-color: #271b1b;
+            color: #ff9898;
+            padding: 20px;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #2f2323;
+            border: 2px solid #ff9898;
+            border-radius: 10px;
+        }
+
+        p, ul {
+            margin: 10px 0 20px;
+            text-align: justify;
+        }
+
+        a {
+            color: #ff6363;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        strong {
+            color: #ff6363;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 20px;
+            background-color: transparent;
+            color: #ff9898;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #ff6363;
+        }
+
+        code {
+            display: block;
+            background-color: #1e1e1e;
+            padding: 10px;
+            border-radius: 5px;
+            color: #00ff7f;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 10px 0;
+        }
+
+        ul {
+            list-style: square;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <button class="close-btn" onclick="window.location.href='index.html'">✖</button>
+
+    <h1>O que são GSIs?</h1>
+
+    <div class="content">
+        <p>
+            <strong>GSIs (Generic System Images)</strong> são imagens de sistema Android baseadas no código-fonte do <strong>AOSP</strong> (Android Open Source Project) sem modificações.
+        </p>
+
+        <h2>Principais características das GSIs:</h2>
+        <ul>
+            <li><strong>Compatibilidade:</strong> Podem ser instaladas em dispositivos compatíveis com o <a href="ptreble.html">Project Treble</a> (a partir do Android 9) e que suportam o Vendor Native Development Kit (VNDK).</li>
+            <li><strong>Desenvolvimento e Testes:</strong> Utilizadas principalmente por desenvolvedores para testar aplicativos em diferentes dispositivos e versões do Android.</li>
+            <li><strong>Sem Personalizações:</strong> Não incluem modificações de fabricantes, oferecendo uma experiência pura de Android.</li>
+            <li><strong>Atualizações e Versões:</strong> Disponíveis para diversas versões do Android, incluindo betas e versões de desenvolvimento.</li>
+        </ul>
+
+        <p>
+            O uso de GSIs é indicado para dispositivos descontinuados ou que não receberão mais atualizações do fabricante. No entanto, como são genéricas, podem não funcionar perfeitamente em todos os dispositivos. Prossiga com cautela.
+        </p>
+
+        <h2>Como instalar uma GSI?</h2>
+        <p>
+            Para instalar uma GSI, seu dispositivo precisa ser compatível com o <a href="ptreble.html">Project Treble</a>. A partir disso:
+        </p>
+
+        <h3>Passo 1: Colocar o celular em modo Fastboot</h3>
+        <p>
+            Siga o tutorial em nossa página sobre <a href="fastboot.html">Fastboot</a> para acessar este modo.
+        </p>
+
+        <h3>Passo 2: Preparar a imagem da GSI</h3>
+        <p>
+            Extraia o arquivo da GSI, que geralmente vem em formatos como <strong>.zip</strong>, <strong>.tar.gz</strong> ou <strong>.gz</strong>. A imagem extraída terá a extensão <strong>.img</strong>, que será usada para instalação.
+        </p>
+
+        <h3>Passo 3: Limpar partições</h3>
+        <p>Execute os seguintes comandos no terminal para garantir que não haverá conflitos durante a instalação:</p>
+        <code>fastboot -w</code>
+        <code>fastboot delete-logical-partition product</code>
+        <code>fastboot delete-logical-partition product_a</code>
+        <code>fastboot delete-logical-partition product_b</code>
+        <code>fastboot delete-logical-partition system_ext</code>
+        <code>fastboot delete-logical-partition system_ext_a</code>
+        <code>fastboot delete-logical-partition system_ext_b</code>
+
+        <h3>Passo 4: Instalar a GSI</h3>
+        <p>Use o comando abaixo para instalar a imagem da GSI:</p>
+        <code>fastboot flash system gsi.img</code>
+        <p>(Substitua <strong>gsi.img</strong> pelo nome correto da imagem extraída).</p>
+
+        <h3>Passo 5: Reiniciar o dispositivo</h3>
+        <p>Conclua o processo com o comando:</p>
+        <code>fastboot reboot</code>
+
+        <p>Se tudo ocorrer corretamente, o dispositivo será inicializado com a nova GSI. Aproveite!</p>
+    </div>
+</body>
+</html>
+

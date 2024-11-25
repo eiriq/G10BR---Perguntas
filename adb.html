@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O que é o ADB?</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Ubuntu', sans-serif;
+            background-color: #271b1b;
+            color: #ff9898;
+            padding: 20px;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #2f2323;
+            border: 2px solid #ff9898;
+            border-radius: 10px;
+        }
+
+        p, ul {
+            margin: 10px 0 20px;
+            text-align: justify;
+        }
+
+        a {
+            color: #ff6363;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        strong {
+            color: #ff6363;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 20px;
+            background-color: transparent;
+            color: #ff9898;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #ff6363;
+        }
+
+        ul {
+            list-style: square;
+            padding-left: 20px;
+        }
+
+        pre {
+            background-color: #1c1515;
+            color: #ff6363;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <button class="close-btn" onclick="window.location.href='index.html'">✖</button>
+
+    <h1>O que é o ADB?</h1>
+
+    <div class="content">
+        <p>
+            <strong>ADB (Android Debug Bridge)</strong> é uma ferramenta de linha de comando versátil que permite a comunicação entre um computador e um dispositivo Android. Ele é amplamente utilizado por desenvolvedores e entusiastas para várias tarefas de desenvolvimento e depuração. Aqui estão os principais pontos sobre o ADB:
+        </p>
+
+        <ul>
+            <li><strong>Comunicação:</strong> ADB permite enviar comandos do computador para o dispositivo Android, facilitando o controle e a interação com o dispositivo.</li>
+            <li><strong>Depuração:</strong> É uma ferramenta essencial para depuração de aplicativos, permitindo a visualização de logs, a instalação e desinstalação de aplicativos, e a execução de comandos no dispositivo.</li>
+            <li><strong>Transferência de Arquivos:</strong> Com ADB, você pode transferir arquivos entre o computador e o dispositivo Android usando comandos específicos.</li>
+        </ul>
+
+        <p><strong>Comandos Comuns:</strong></p>
+        <pre>adb devices           # Lista dispositivos conectados.</pre>
+        <pre>adb install [nome_do_apk]  # Instala um aplicativo no dispositivo.</pre>
+        <pre>adb pull [caminho_no_dispositivo] [caminho_no_computador]  # Copia um arquivo do dispositivo para o computador.</pre>
+        <pre>adb push [caminho_no_computador] [caminho_no_dispositivo]  # Copia um arquivo do computador para o dispositivo.</pre>
+
+        <p><strong>Como habilitar o ADB:</strong></p>
+        <ol>
+            <li>Ative as <strong>Opções de Desenvolvedor</strong>: Vá para "Configurações" > "Sobre o telefone" e toque várias vezes no "Número da versão" até que as "Opções de Desenvolvedor" sejam ativadas.</li>
+            <li>Habilite a <strong>Depuração USB</strong>: Em "Configurações" > "Opções de Desenvolvedor", ative a "Depuração USB".</li>
+            <li>Conecte ao Computador: Conecte o dispositivo ao computador via cabo USB e aceite a solicitação de autorização para depuração USB no dispositivo.</li>
+        </ol>
+
+        <p>
+            <strong>ATENÇÃO!</strong> Manipular comandos ADB requer cuidado, pois erros podem causar problemas no dispositivo. Prossiga por sua conta e risco, e, se tiver dúvidas, busque ajuda em comunidades ou no grupo antes de executar comandos que você não compreende totalmente.
+        </p>
+    </div>
+</body>
+</html>
+

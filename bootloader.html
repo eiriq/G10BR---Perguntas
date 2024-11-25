@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O que é o Bootloader?</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Ubuntu', sans-serif;
+            background-color: #271b1b;
+            color: #ff9898;
+            padding: 20px;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        h1, h2, h3 {
+            margin: 20px 0;
+        }
+
+        h1 {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #2f2323;
+            border: 2px solid #ff9898;
+            border-radius: 10px;
+        }
+
+        p, ol, ul {
+            margin: 10px 0 20px;
+            text-align: justify;
+        }
+
+        a {
+            color: #ff6363;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        strong {
+            color: #ff6363;
+        }
+
+        .code {
+            background-color: #1e1e1e;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            color: #00ff00;
+            display: block;
+            margin: 10px 0;
+            white-space: pre-wrap;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 20px;
+            background-color: transparent;
+            color: #ff9898;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #ff6363;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 18px;
+        }
+
+        .additional-links {
+            margin-top: 40px;
+        }
+
+        .additional-links ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .additional-links ul li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <button class="close-btn" onclick="window.location.href='index.html'">✖</button>
+
+    <h1>O que é o Bootloader?</h1>
+
+    <div class="content">
+        <p>
+            O <strong>bootloader</strong> é um programa essencial que inicializa o dispositivo e carrega o sistema operacional. Ele verifica a integridade do software 
+            e garante que o sistema operacional instalado seja autêntico e seguro.
+        </p>
+
+        <p>
+            É necessário desbloquear o bootloader para aplicar o <strong>Root</strong> no Android, ou para instalar 
+            <a href="roms.html">ROMs customizadas</a> ou <a href="https://developer.android.com/topic/generic-system-image">GSIs</a>.
+        </p>
+
+        <h2>ATENÇÃO!</h2>
+        <p>
+            A ativação do bootloader pode acarretar riscos ao dispositivo, e <strong>todos os dados serão formatados</strong>. 
+            Prossiga por sua conta e risco.
+        </p>
+
+        <h2>Desbloqueando o Bootloader na Motorola</h2>
+        <p>
+            Siga os passos abaixo para desbloquear o bootloader em dispositivos Motorola:
+        </p>
+
+        <h3>Preparativos:</h3>
+        <ul>
+            <li>Ative a opção <strong>"Permitir desbloqueio OEM"</strong> nas configurações de desenvolvedor.</li>
+            <li>Ative <strong>"Depuração USB"</strong> também nas configurações de desenvolvedor.</li>
+            <li>
+                Baixe e extraia o <a href="https://developer.android.com/tools/releases/platform-tools?hl=pt-br">Platform Tools</a>.
+            </li>
+        </ul>
+
+        <p>
+            Após extrair o Platform Tools, abra um terminal ou prompt de comando na pasta e execute:
+        </p>
+        <div class="code">adb devices</div>
+
+        <p>
+            Um pop-up aparecerá no celular solicitando permissão para confiar na chave RSA. Clique em "OK".
+        </p>
+
+        <p>
+            Em seguida, execute:
+        </p>
+        <div class="code">adb reboot bootloader</div>
+
+        <h3>Passos para desbloqueio:</h3>
+        <ol>
+            <li>
+                Acesse o site da Motorola para obter seu código de desbloqueio: 
+                <a href="https://motorola-global-portal-pt.custhelp.com/app/standalone/bootloader/unlock-your-device-a">Clique aqui</a>.
+            </li>
+            <li>
+                Clique na última opção "<strong>Proceed anyway</strong>" e faça login com sua conta Google.
+            </li>
+            <li>
+                No modo fastboot, execute o comando:
+            </li>
+            <div class="code">fastboot oem get_unlock_data</div>
+
+            <p>
+                Copie os dígitos exibidos, remova <strong>(bootloader)</strong> e os espaços, deixando uma única sequência contínua.
+            </p>
+
+            <li>
+                Cole a sequência no site da Motorola e aceite os termos. Clique em "Can my device be unlocked?".
+            </li>
+            <li>
+                Se o dispositivo for compatível, você receberá um email com o código de desbloqueio.
+            </li>
+            <li>
+                Use o comando abaixo para finalizar o desbloqueio:
+            </li>
+            <div class="code">fastboot oem unlock SEU_CÓDIGO_DE_DESBLOQUEIO</div>
+
+            <li>
+                Confirme o desbloqueio pelo celular. O dispositivo será reiniciado e estará desbloqueado.
+            </li>
+        </ol>
+
+        <p><strong>Pronto! Aproveite o novo controle sobre o seu dispositivo.</strong></p>
+
+        <div class="additional-links">
+            <h2>Outros dispositivos</h2>
+            <p>Para outras marcas, os processos podem variar. Confira os tutoriais abaixo:</p>
+            <ul>
+                <li><a href="https://drfone.wondershare.com.br/unlock/unlock-bootloader-on-samsung.html" target="_blank">Samsung</a></li>
+                <li><a href="https://drfone.wondershare.com.br/unlock/how-to-unlock-xiaomi-bootloader.html" target="_blank">Xiaomi</a></li>
+                <li><a href="https://drfone.wondershare.com.br/unlock/oneplus-bootloader-unlock.html" target="_blank">OnePlus</a></li>
+                <li><a href="https://drfone.wondershare.com.br/unlock/lg-bootloader-unlock-how-to.html" target="_blank">LG</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+

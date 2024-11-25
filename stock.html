@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O que é uma Stock ROM?</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Ubuntu', sans-serif;
+            background-color: #271b1b;
+            color: #ff9898;
+            padding: 20px;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        h1, h2 {
+            margin: 20px 0;
+        }
+
+        h1 {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #2f2323;
+            border: 2px solid #ff9898;
+            border-radius: 10px;
+        }
+
+        p, ul {
+            margin: 10px 0 20px;
+            text-align: justify;
+        }
+
+        a {
+            color: #ff6363;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        strong {
+            color: #ff6363;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 20px;
+            background-color: transparent;
+            color: #ff9898;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #ff6363;
+        }
+
+        ul {
+            list-style: square;
+            padding-left: 20px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <button class="close-btn" onclick="window.location.href='index.html'">✖</button>
+
+    <h1>O que é uma Stock ROM?</h1>
+
+    <div class="content">
+        <p>
+            A <strong>Stock ROM</strong> (ou ROM de Stock) refere-se à versão original do sistema operacional Android fornecida pelo fabricante do dispositivo. Essa é a versão que vem pré-instalada no dispositivo quando você o compra. As principais características incluem:
+        </p>
+
+        <ul>
+            <li><strong>Estabilidade:</strong> Desenvolvida e testada pelo fabricante, garantindo melhor desempenho no hardware específico.</li>
+            <li><strong>Atualizações de Segurança:</strong> Recebe correções diretamente do fabricante.</li>
+            <li><strong>Garantia e Suporte:</strong> Mantém a garantia do dispositivo e suporte oficial.</li>
+            <li><strong>Interface e Apps:</strong> Inclui personalizações e aplicativos do fabricante (como a One UI da Samsung ou MyUX da Motorola).</li>
+        </ul>
+
+        <p>
+            É importante lembrar que desbloquear o <a href="bootloader.html">bootloader</a> e instalar ROMs customizadas pode invalidar a garantia, mesmo que você volte à Stock ROM.
+        </p>
+
+        <h2>Retornando à Stock ROM (Moto G10):</h2>
+
+        <h3>Opção 1: Usando o LMSA</h3>
+        <p>
+            A Motorola oferece o <a href="https://drive.google.com/file/d/15t6dKo4X8UzYrh667vEyWszhmlJZyyFS/view?usp=sharing" download>Rescue and Smart Assistant (LMSA)</a>, que simplifica o processo. Siga os passos:
+        </p>
+        <ul>
+            <li>Baixe e instale o LMSA.</li>
+            <li>Faça login com sua conta Motorola ou Google.</li>
+            <li>No dispositivo, entre no modo *bootloader* (pressione <strong>Volume Inferior + Power</strong> durante a reinicialização).</li>
+            <li>Conecte o celular ao computador com um cabo USB-C.</li>
+            <li>Aguarde o software reconhecer o dispositivo e siga as instruções para formatar e reinstalar a Stock ROM.</li>
+        </ul>
+        <p>
+            O processo será automático e levará poucos minutos, dependendo da sua conexão com a internet.
+        </p>
+
+        <h3>Opção 2: Download Manual</h3>
+        <p>
+            Em casos onde o LMSA não funciona (como mensagens de erro "Key Invalid"), é necessário baixar a Stock ROM manualmente. 
+Recomendamos buscar ajuda no <strong><a href="https://t.me/MotoG10BR" target="_blank">grupo Moto G10 Brasil</a></strong> para orientação detalhada sobre como instalar a ROM.
+        </p>
+    </div>
+</body>
+</html>
+

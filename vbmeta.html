@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O que é o VBMETA?</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Ubuntu', sans-serif;
+            background-color: #271b1b;
+            color: #ff9898;
+            padding: 20px;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        h1, h2 {
+            margin: 20px 0;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #2f2323;
+            border: 2px solid #ff9898;
+            border-radius: 10px;
+        }
+
+        p {
+            margin: 10px 0 20px;
+            text-align: justify;
+        }
+
+        strong {
+            color: #ff6363;
+        }
+
+        pre {
+            background-color: #1c1c1c;
+            color: #98ff98;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            overflow-x: auto;
+            line-height: 1.5;
+            margin: 20px 0;
+            border: 1px solid #ff9898;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 20px;
+            background-color: transparent;
+            color: #ff9898;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #ff6363;
+        }
+    </style>
+</head>
+<body>
+    <button class="close-btn" onclick="window.location.href='index.html'">✖</button>
+
+    <h1>O que é o VBMETA?</h1>
+
+    <div class="content">
+        <p>
+            O <strong>vbmeta</strong> é um arquivo usado no sistema operacional Android para garantir a integridade e a segurança do boot do dispositivo. 
+            Ele é parte do <strong>Verified Boot</strong>, um recurso que verifica a integridade do software durante o processo de inicialização. 
+            O <strong>vbmeta</strong> contém uma assinatura digital que ajuda a proteger o boot loader e outros componentes críticos do sistema contra modificações não autorizadas.
+        </p>
+
+        <p>
+            Em algumas ROMs, ou <strong>GSIs</strong> (principalmente), a desativação do <strong>vbmeta</strong> é necessária para o boot da imagem (sistema) porque o 
+            <strong>Verified Boot</strong> (Inicialização Verificada) do Android pode impedir que essas imagens sejam instaladas corretamente. 
+            Neste caso, o seguinte comando deve ser usado via <strong>fastboot</strong>, para a desativação correta do <strong>vbmeta</strong>:
+        </p>
+
+        <pre>fastboot flash --disable-verity --disable-verification vbmeta vbmeta.img</pre>
+
+        <p>
+            Certifique-se de ter o arquivo <strong>vbmeta.img</strong> no diretório onde está executando os comandos via <strong>fastboot</strong>.
+        </p>
+    </div>
+</body>
+</html>
+

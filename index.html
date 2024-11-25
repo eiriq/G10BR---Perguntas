@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procure suas dúvidas</title>
+    <style>
+        /* Estilos gerais */
+        body {
+            margin: 0;
+            font-family: 'Ubuntu', sans-serif;
+            background-color: #271b1b;
+            color: #ff9898;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        /* Título centralizado */
+        h1 {
+            margin: 0;
+            text-align: center;
+        }
+
+        /* Barra de pesquisa */
+        .search-container {
+            margin-top: 20px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .search-bar {
+            width: 200px;
+            height: 30px;
+            padding: 5px 10px;
+            border: 2px solid #ff9898;
+            border-radius: 20px;
+            background-color: transparent;
+            color: #ff9898;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .search-bar::placeholder {
+            color: #ff9898;
+            transition: color 0.5s;
+        }
+
+        .search-bar:focus,
+        .search-bar:hover {
+            width: 400px;
+        }
+
+        /* Resultados da pesquisa */
+        .results-container {
+            margin-top: 10px;
+            width: 400px;
+            max-height: 200px;
+            overflow-y: auto;
+            background-color: #2f2323;
+            border: 2px solid #ff9898;
+            border-radius: 10px;
+            display: none;
+            color: #ff9898;
+            transition: all 0.5s;
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        .results-container.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .results-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .results-container::-webkit-scrollbar-thumb {
+            background-color: #ff9898;
+            border-radius: 10px;
+            transition: background-color 0.5s;
+        }
+
+        .no-results {
+            padding: 15px;
+            text-align: center;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .result-item {
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            animation: slideIn 0.3s ease-in-out;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .result-item.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .result-item:hover {
+            background-color: #ff9898;
+            color: #271b1b;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Ícone de configurações */
+        .settings-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 24px;
+            height: 24px;
+            border: 2px solid #ff9898;
+            border-radius: 50%;
+            background-color: #271b1b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.5s;
+        }
+
+        .settings-icon::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            border: 2px solid #ff9898;
+            border-radius: 50%;
+            transition: all 0.5s;
+        }
+
+        /* Marca d'água */
+        .watermark {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 12px;
+            opacity: 0.6;
+        }
+
+        /* Container de configurações */
+        .settings-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            width: 300px;
+            background-color: #2f2323;
+            border: 2px solid #ff9898;
+            border-radius: 10px;
+            padding: 20px;
+            opacity: 0;
+            display: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .settings-container.active {
+            display: block;
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .settings-container.fade-out {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.9);
+        }
+
+        .settings-header {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+       /* Botão de fechar */
+.close-button {
+    width: 30px; /* Tornando o botão "gordinho" */
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    font-size: 24px;
+    color: #ff9898;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* Removendo o efeito de hover */
+body.amoled-theme .close-button {
+    color: #ffffff;
+}
+
+body.amoled-theme .close-button:hover {
+    color: #ffffff;
+    background-color: transparent; /* Removendo a cor de fundo no hover */
+}
+        .toggle-switch {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .toggle-switch input {
+            appearance: none;
+            width: 40px;
+            height: 20px;
+            background: #ff9898;
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .toggle-switch input:before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 16px;
+            height: 16px;
+            background: #271b1b;
+            border-radius: 50%;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .toggle-switch input:checked:before {
+            transform: translateX(20px);
+        }
+
+        .about-button {
+            margin-top: 20px;
+            padding: 10px;
+            width: 100%;
+            border: 2px solid #ff9898;
+            border-radius: 20px;
+            background: transparent;
+            color: #ff9898;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.5s;
+        }
+
+        .about-button:hover {
+            background-color: #ff9898;
+            color: #271b1b;
+        }
+
+        /* Amoled theme modifications */
+        body.amoled-theme {
+            background-color: #000000;
+            color: #FFFFFF;
+        }
+
+        body.amoled-theme .search-bar,
+        body.amoled-theme .results-container,
+        body.amoled-theme .settings-container,
+        body.amoled-theme .settings-icon,
+        body.amoled-theme .close-button {
+            border-color: #FFFFFF;
+            color: #FFFFFF;
+        }
+
+        body.amoled-theme .search-bar::placeholder {
+            color: #FFFFFF;
+        }
+
+        body.amoled-theme .settings-icon::before {
+            border-color: #FFFFFF;
+        }
+
+        body.amoled-theme .results-container {
+            background-color: #000000;
+        }
+
+        body.amoled-theme .results-container::-webkit-scrollbar-thumb {
+            background-color: #FFFFFF;
+        }
+
+        body.amoled-theme .result-item:hover {
+            background-color: #FFFFFF;
+            color: #000000;
+        }
+
+        body.amoled-theme .settings-container {
+            background-color: #000000;
+        }
+
+        body.amoled-theme .search-bar {
+            background-color: #000000;
+        }
+
+        body.amoled-theme .toggle-switch input {
+            background: #FFFFFF;
+        }
+
+        body.amoled-theme .toggle-switch input:before {
+            background: #000000;
+        }
+
+        body.amoled-theme .about-button {
+            border-color: #FFFFFF;
+            color: #FFFFFF;
+            background-color: transparent;
+        }
+
+        body.amoled-theme .about-button:hover {
+            background-color: #FFFFFF;
+            color: #000000;
+        }
+
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Procure aqui suas dúvidas!</h1>
+
+    <div class="search-container">
+        <input type="text" class="search-bar" placeholder="Pesquise sua dúvida..." oninput="searchResults(event)" onblur="clearSearch()">
+        <div class="results-container" id="results"></div>
+    </div>
+
+    <div class="settings-icon" onclick="toggleSettings()"></div>
+
+    <div class="settings-container" id="settings">
+        <div class="settings-header">
+            <button class="close-button" onclick="toggleSettings()">✖</button>
+        </div>
+        <div class="toggle-switch">
+            <label>Preto/Amoled:</label>
+            <input type="checkbox" id="amoled-switch" onchange="toggleAmoledTheme()">
+        </div>
+        <button class="about-button" onclick="window.location.href='about.html'">Sobre Nós</button>
+    </div>
+
+    <div class="watermark">Grupo G10 Brasil</div>
+
+    <script>
+        const topics = ["GSI", "ROM", "GAPPS", "Stock", "Vendor", "VBmeta", "vndklite", "root", "Magisk", "TWRP", "APK", "ADB", "Fastboot", "Bootloader", "Recovery", "KSU", "Tree", "SourceKernel", "AOSP", "Fastboot e FastbootD", "GAPPS Siglas", "AVB"];
+        const body = document.body;
+
+        function clearSearch() {
+            setTimeout(() => {
+                document.querySelector('.search-bar').value = '';
+                const resultsContainer = document.getElementById("results");
+                resultsContainer.style.display = "none";
+            }, 200);
+        }
+
+        function searchResults(event) {
+            const input = event.target.value.toLowerCase();
+            const resultsContainer = document.getElementById("results");
+            resultsContainer.innerHTML = "";
+            
+            if (input) {
+                const filteredTopics = topics.filter(topic => 
+                    topic.toLowerCase().includes(input)
+                );
+
+                resultsContainer.style.display = "block";
+                setTimeout(() => {
+                    resultsContainer.classList.add('show');
+                }, 10);
+
+                if (filteredTopics.length === 0) {
+                    const noResults = document.createElement("div");
+                    noResults.className = "no-results";
+                    noResults.textContent = "Ops... não temos isso ainda";
+                    resultsContainer.appendChild(noResults);
+                } else {
+                    filteredTopics.forEach((topic, index) => {
+                        const div = document.createElement("div");
+                        div.className = "result-item";
+                        div.textContent = topic;
+                        div.onclick = () => {
+                            window.location.href = topic.toLowerCase() + ".html";
+                        };
+                        resultsContainer.appendChild(div);
+                        
+                        setTimeout(() => {
+                            div.classList.add('show');
+                        }, index * 50);
+                    });
+                }
+            } else {
+                resultsContainer.classList.remove('show');
+                setTimeout(() => {
+                    resultsContainer.style.display = "none";
+                }, 300);
+            }
+        }
+
+        function toggleSettings() {
+            const settings = document.getElementById("settings");
+            if (!settings.classList.contains("active")) {
+                settings.style.display = "block";
+                setTimeout(() => {
+                    settings.classList.add("active");
+                }, 10);
+            } else {
+                settings.classList.add("fade-out");
+                settings.classList.remove("active");
+                setTimeout(() => {
+                    settings.classList.remove("fade-out");
+                    settings.style.display = "none";
+                }, 300);
+            }
+        }
+
+        function toggleAmoledTheme() {
+            const isAmoled = document.getElementById("amoled-switch").checked;
+            if (isAmoled) {
+                body.classList.add('amoled-theme');
+            } else {
+                body.classList.remove('amoled-theme');
+            }
+        }
+    </script>
+</body>
+</html>

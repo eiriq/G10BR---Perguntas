@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O que é o Fastboot?</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Ubuntu', sans-serif;
+            background-color: #271b1b;
+            color: #ff9898;
+            padding: 20px;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #2f2323;
+            border: 2px solid #ff9898;
+            border-radius: 10px;
+        }
+
+        p, ul {
+            margin: 10px 0 20px;
+            text-align: justify;
+        }
+
+        a {
+            color: #ff6363;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        strong {
+            color: #ff6363;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 20px;
+            background-color: transparent;
+            color: #ff9898;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #ff6363;
+        }
+
+        code {
+            display: block;
+            background-color: #1e1e1e;
+            padding: 10px;
+            border-radius: 5px;
+            color: #00ff7f;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 10px 0;
+        }
+
+        ul {
+            list-style: square;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <button class="close-btn" onclick="window.location.href='index.html'">✖</button>
+
+    <h1>O que é o Fastboot?</h1>
+
+    <div class="content">
+        <p>
+            <strong>Fastboot</strong> é uma ferramenta de diagnóstico e engenharia que permite gravar partições do sistema Android por meio de um cabo USB a partir de um computador. Ele é frequentemente usado para tarefas como desbloquear o <a href="bootloader.html">bootloader</a>, atualizar firmwares e realizar outras manutenções avançadas.
+        </p>
+
+        <h2>Principais Utilidades:</h2>
+        <ul>
+            <li><strong>Desbloqueio do Bootloader:</strong> Necessário para instalar ROMs customizadas e realizar modificações no sistema.</li>
+            <li><strong>Atualização de Firmware:</strong> Permite instalar atualizações, recuperações customizadas e outros arquivos de sistema.</li>
+            <li><strong>Manutenção e Diagnóstico:</strong> Útil para corrigir dispositivos que não inicializam normalmente.</li>
+        </ul>
+
+        <h2>Comandos Fastboot:</h2>
+        <p>No caso do Moto G10, o Fastboot é essencial para tarefas como instalação de ROMs e GSIs. Exemplos de comandos:</p>
+        <code>fastboot devices</code>
+        <code>fastboot flash boot</code>
+        <code>fastboot flash system</code>
+
+        <h2>Como acessar o Fastboot:</h2>
+
+        <h3>Pelo próprio dispositivo:</h3>
+        <ul>
+            <li><strong>Passo 1:</strong> Desligue o dispositivo Android.</li>
+            <li><strong>Passo 2:</strong> Conecte o dispositivo ao computador usando um cabo USB.</li>
+            <li><strong>Passo 3:</strong> Pressione e segure os botões <strong>Volume para baixo</strong> e <strong>Power</strong> ao mesmo tempo por cerca de 10 segundos.</li>
+            <li><strong>Passo 4:</strong> Solte os botões quando a tela do Bootloader aparecer.</li>
+            <li><strong>Passo 5:</strong> Use as teclas de volume para selecionar <strong>"Enter Recovery"</strong>.</li>
+            <li><strong>Passo 6:</strong> No Recovery, vá em <strong>Advanced</strong> e selecione <strong>"Enter Fastboot"</strong>.</li>
+        </ul>
+
+        <h3>Pelo computador:</h3>
+        <ul>
+            <li>Certifique-se de que o computador está autorizado a operar comandos ADB no celular.</li>
+            <li>Execute o seguinte comando no terminal:
+                <code>adb reboot fastboot</code>
+            </li>
+        </ul>
+
+        <p>
+            Após acessar o Fastboot, você poderá executar diversos comandos para manutenção, como desbloquear o bootloader e instalar ROMs.
+        </p>
+
+        <h2>Atenção!</h2>
+        <p>
+            Manipular partes sensíveis do sistema Android, como Fastboot e Bootloader, exige conhecimento mínimo e pode acarretar falhas graves, como o <a href="hbrick.html">hard brick</a>. Prossiga por sua conta e risco!
+        </p>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O que são os Google Apps (GApps)?</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Ubuntu', sans-serif;
+            background-color: #271b1b;
+            color: #ff9898;
+            padding: 20px;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #2f2323;
+            border: 2px solid #ff9898;
+            border-radius: 10px;
+        }
+
+        p, ul {
+            margin: 10px 0 20px;
+            text-align: justify;
+        }
+
+        a {
+            color: #ff6363;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        strong {
+            color: #ff6363;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 20px;
+            background-color: transparent;
+            color: #ff9898;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #ff6363;
+        }
+
+        code {
+            display: block;
+            background-color: #1e1e1e;
+            padding: 10px;
+            border-radius: 5px;
+            color: #00ff7f;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 10px 0;
+        }
+
+        ul {
+            list-style: square;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <button class="close-btn" onclick="window.location.href='index.html'">✖</button>
+
+    <h1>O que são os Google Apps (GApps)?</h1>
+
+    <div class="content">
+        <p>
+            <strong>GApps (Google Apps)</strong> são pacotes de aplicativos e serviços desenvolvidos pelo Google para dispositivos Android. Esses pacotes incluem aplicativos essenciais amplamente utilizados pelos usuários.
+        </p>
+
+        <h2>Principais componentes dos GApps:</h2>
+        <ul>
+            <li><strong>Google Play Services:</strong> Funcionalidade central para sincronização de contas e serviços de localização.</li>
+            <li><strong>Google Play Store:</strong> Permite baixar e atualizar aplicativos diretamente do Google.</li>
+            <li><strong>Google Maps:</strong> Serviço de mapas e navegação.</li>
+            <li><strong>Gmail:</strong> Aplicativo de email do Google.</li>
+            <li><strong>Google Calendar:</strong> Gerenciamento de agenda e eventos.</li>
+            <li><strong>Google Drive:</strong> Serviço de armazenamento em nuvem.</li>
+            <li><strong>YouTube:</strong> Plataforma de vídeos online.</li>
+        </ul>
+
+        <h2>Versões dos Pacotes GApps:</h2>
+        <ul>
+            <li><strong>Pico:</strong> Apenas os aplicativos e serviços mais essenciais.</li>
+            <li><strong>Nano:</strong> Inclui alguns aplicativos extras além dos essenciais.</li>
+            <li><strong>Micro, Mini, Full, Stock:</strong> Cada pacote oferece um conjunto progressivamente maior de aplicativos Google.</li>
+        </ul>
+
+        <p>
+            Os GApps são geralmente instalados em ROMs customizadas para garantir acesso aos serviços Google. Eles também são uma alternativa para usar aplicativos Google em sistemas que, por padrão, não os incluem.
+        </p>
+
+        <h2>Como instalar os GApps?</h2>
+        <p>
+            Para instalar os GApps em uma ROM ou GSI:
+        </p>
+
+        <h3>Passo 1: Acesse o modo Recovery</h3>
+        <p>
+            Certifique-se de que seu dispositivo está no modo <strong>Recovery</strong>. Se não estiver, siga o tutorial correspondente.
+        </p>
+
+        <h3>Passo 2: Aplicar o pacote GApps</h3>
+        <p>
+            No Recovery, vá até a opção <strong>“Apply via ADB”</strong> na guia avançada ou na guia padrão que aparecer. Conecte o dispositivo ao computador e execute o comando:
+        </p>
+        <code>adb sideload nome_do_arquivo.zip</code>
+        <p>
+            Substitua <strong>nome_do_arquivo.zip</strong> pelo nome do arquivo GApps que você baixou.
+        </p>
+
+        <h3>Passo 3: Reiniciar o dispositivo</h3>
+        <p>
+            Após a instalação, use o comando abaixo para reiniciar:
+        </p>
+        <code>adb reboot</code>
+        <p>
+            <strong>Nota:</strong> É normal que a instalação dos GApps pare em 47%. Apenas aguarde, isso faz parte do processo.
+        </p>
+
+        <p>
+            Alguns sistemas já incluem pacotes Google por padrão. Verifique siglas como <strong>bgn</strong>, <strong>bgs</strong> ou <strong>gapps</strong> para identificar essa inclusão.
+        </p>
+    </div>
+</body>
+</html>
+

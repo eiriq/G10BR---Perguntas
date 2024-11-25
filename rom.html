@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O que são ROMs?</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Ubuntu', sans-serif;
+            background-color: #271b1b;
+            color: #ff9898;
+            padding: 20px;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        h1, h2 {
+            margin: 20px 0;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        h2 {
+            font-size: 20px;
+            color: #ff6363;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #2f2323;
+            border: 2px solid #ff9898;
+            border-radius: 10px;
+        }
+
+        p {
+            margin: 10px 0 20px;
+            text-align: justify;
+        }
+
+        ul {
+            list-style-type: square;
+            margin-left: 20px;
+        }
+
+        ul li {
+            margin: 5px 0;
+        }
+
+        ul li a {
+            color: #ff6363;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        ul li a:hover {
+            color: #ff9898;
+        }
+
+        .search-container {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .search-bar {
+            width: 100%;
+            max-width: 400px;
+            height: 40px;
+            padding: 10px;
+            border: 2px solid #ff9898;
+            border-radius: 20px;
+            background-color: transparent;
+            color: #ff9898;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .search-bar::placeholder {
+            color: #ff9898;
+        }
+
+        .search-bar:focus,
+        .search-bar:hover {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff6363;
+            color: #271b1b;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #ff9898;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 20px;
+            background-color: transparent;
+            color: #ff9898;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #ff6363;
+        }
+    </style>
+</head>
+<body>
+    <button class="close-btn" onclick="window.location.href='index.html'">✖</button>
+
+    <h1>O que são ROMs?</h1>
+
+    <div class="content">
+        <p>
+            ROM é a sigla para <strong>Read Only Memory</strong>, mas no contexto dos smartphones Android, refere-se ao software que controla todas as funções do dispositivo — ou seja, o sistema operacional. Existem dois tipos principais de ROMs:
+        </p>
+
+        <h2>1. ROMs de Estoque (Stock ROMs)</h2>
+        <p>
+            Essas são as versões originais pré-instaladas em dispositivos pelos fabricantes, como Motorola, Samsung, entre outros. Elas são otimizadas para o dispositivo e oferecem estabilidade e suporte oficial.
+        </p>
+
+        <h2>2. ROMs Customizadas (Custom ROMs)</h2>
+        <p>
+            Desenvolvidas por comunidades e desenvolvedores independentes, as ROMs customizadas trazem melhorias, personalizações e novos recursos que não estão disponíveis nas ROMs de estoque. Exemplos populares incluem:
+        </p>
+        <ul>
+            <li><a href="https://lineageos.org/" target="_blank">Lineage</a></li>
+            <li><a href="https://crdroid.net/" target="_blank">crDroid</a></li>
+            <li><a href="https://www.projectmatrixx.org/" target="_blank">Matrixx</a></li>
+            <li><a href="https://beebom.com/best-custom-roms-android-phones/" target="_blank">Outras</a></li>
+        </ul>
+
+        <h2>Considerações Importantes</h2>
+        <p>
+            As ROMs customizadas geralmente não possuem certificações, como o Play Integrity, e podem não incluir aplicativos essenciais como o Google Play Services. Isso pode afetar o funcionamento de aplicativos populares. 
+        </p>
+
+        <p>
+            Recomendamos o uso de ROMs customizadas apenas se o seu dispositivo não receber mais atualizações do fabricante original. Caso contrário, mantenha-se na ROM de estoque para maior segurança e estabilidade.
+        </p>
+
+        <p>
+            Caso não encontre uma ROM oficial para seu dispositivo, considere alternativas não oficiais. No entanto, tenha em mente que elas podem comprometer a segurança.
+        </p>
+
+        <div class="search-container">
+            <input 
+                type="text" 
+                class="search-bar" 
+                placeholder="Digite o modelo do seu dispositivo..."
+                id="device-search"
+                onkeydown="handleSearch(event)">
+        </div>
+    </div>
+
+    <script>
+        function handleSearch(event) {
+            if (event.key === 'Enter') {
+                const query = event.target.value.trim();
+                if (query) {
+                    const googleSearchUrl = `https://www.google.com/search?q=Custom+ROMs+para+${encodeURIComponent(query)}`;
+                    window.location.href = googleSearchUrl;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+

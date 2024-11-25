@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O que é o KernelSU?</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Ubuntu', sans-serif;
+            background-color: #271b1b;
+            color: #ff9898;
+            padding: 20px;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        h1, h2 {
+            margin: 20px 0;
+        }
+
+        h1 {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #2f2323;
+            border: 2px solid #ff9898;
+            border-radius: 10px;
+        }
+
+        p, ul {
+            margin: 10px 0 20px;
+            text-align: justify;
+        }
+
+        a {
+            color: #ff6363;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        strong {
+            color: #ff6363;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 20px;
+            background-color: transparent;
+            color: #ff9898;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #ff6363;
+        }
+
+        ul {
+            list-style: square;
+            padding-left: 20px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <button class="close-btn" onclick="window.location.href='index.html'">✖</button>
+
+    <h1>O que é o KernelSU?</h1>
+
+    <div class="content">
+        <p>
+            <strong>KernelSU</strong> é uma solução de <a href="root.html">root</a> baseada no kernel para dispositivos Android. 
+            Ele funciona diretamente no kernel Linux, oferecendo mais controle sobre aplicativos do espaço do usuário.
+        </p>
+
+        <h2>Características principais do KernelSU:</h2>
+        <ul>
+            <li><strong>Controle de Acesso Root:</strong> Apenas aplicativos autorizados podem acessar ou ver o comando <code>su</code>.</li>
+            <li><strong>Privilégios Root Personalizáveis:</strong> Permite a personalização de <code>su</code> com <code>uid</code>, <code>gid</code>, grupos, capacidades e regras do SELinux.</li>
+            <li><strong>Módulos:</strong> Permite modificar o sistema sem sistema usando OverlayFS, oferecendo grande poder.</li>
+        </ul>
+
+        <h2>Diferenças entre Root Normal e KernelSU:</h2>
+
+        <h3>Root Normal:</h3>
+        <p>
+            Tradicionalmente, o root no Android é obtido modificando o ramdisk ou instalando um gerenciador de root como o Magisk. Isso permite que aplicativos do usuário obtenham privilégios de root, mas o processo de root é visível para o sistema e pode ser detectado por algumas aplicações.
+        </p>
+
+        <h3>KernelSU:</h3>
+        <p>
+            Funciona diretamente no kernel Linux, oferecendo uma camada adicional de privilégios. Com o KernelSU, apenas aplicativos autorizados podem acessar o comando <code>su</code>, e o processo de root é menos visível ao sistema, tornando-o mais seguro e menos detectável por aplicativos.
+        </p>
+
+        <p>
+            Em resumo, o KernelSU oferece uma abordagem mais avançada e segura para obter privilégios de root, enquanto o root normal é mais tradicional e visível ao sistema.
+        </p>
+    </div>
+</body>
+</html>
+
